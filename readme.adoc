@@ -1,8 +1,15 @@
-= Tests readme
+= DataVaccinator test and performance measurement scripts
 :author: DataVaccinator Team
 :email: info@datavaccinator.com
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
 
-This repository contains several scripts to verify the complete DataVaccinaor Vault API functionality.
+This repository contains several scripts to verify the complete DataVaccinaor Vault API functionality. It also offers single and multiple instances performance measurement.
 
 == Run a protocol test (vaccinator_test.php)
 The protocol test script needs the url (and port) of the service to test. Call it like this:
