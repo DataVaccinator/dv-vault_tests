@@ -97,22 +97,22 @@ Start client 0...
 Start client 1...
 Start client 2...
 Start client 3...
-Connection to http://localhost:8080/index.php is working.
+Connection to http://localhost:8080 is working.
 Duration: 31 sec
 Transactions: 209 (each create, retrieve and delete)
 Operations/sec: 20.225806451613
 
-Connection to http://localhost:8080/index.php is working.
+Connection to http://localhost:8080 is working.
 Duration: 31 sec
 Transactions: 211 (each create, retrieve and delete)
 Operations/sec: 20.41935483871
 
-Connection to http://localhost:8080/index.php is working.
+Connection to http://localhost:8080 is working.
 Duration: 31 sec
 Transactions: 224 (each create, retrieve and delete)
 Operations/sec: 21.677419354839
 
-Connection to http://localhost:8080/index.php is working.
+Connection to http://localhost:8080 is working.
 Duration: 31 sec
 Transactions: 223 (each create, retrieve and delete)
 Operations/sec: 21.58064516129
@@ -134,7 +134,26 @@ OS Type: 64-bit +
 Processors: 2 × Intel® Core™ i5-7600K CPU @ 3.80GHz +
 Memory: 5,8 GiB of RAM +
 
-This machine was also running the connected single instance of Cockroach Database and the test script itself. ~50% of the system performance was utilized by Cockroach DB, ~20% by dv-vault executable.
+This virtual machine was also running the connected single instance of Cockroach Database and the test script itself. ~50% of the system performance was utilized by Cockroach DB, ~20% by dv-vault executable.
 
-Please note that a production system with 4 CPU cores and 16GB of memory would do much more!
+Please note that a production system with 4 CPU cores and 16GB of memory would do much more! 
+
+For example, on a 2vCPU/4GB RAM system at a German hoster, we got up to 330 operations/sec (using 20 threads while the CockroachDB had two nodes, one local and one in Helsinki with 25ms latency).
 ====
+
+=== Placeholder
+
+You can use a placeholder with the following scheme to generate random numbers in your URL:
+----
+[min-max]
+----
+This will get replaced by a number between given min and max.
+
+*Example:*
+----
+php perf_test.php 1 vaccinator https://dc[1-3].sirius.datavaccinator.com 10 4
+----
+
+The above will generate URLs with a random number between 1 and 3 like for dc**1**.sirius.datavaccinator.com or dc**2**.sirius.datavaccinator.com.
+
+This allows you to test access to multiple datavaccinator instances, all connected to the same database cluster.

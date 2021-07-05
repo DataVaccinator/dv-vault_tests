@@ -135,12 +135,24 @@ function _doDelete($vid) {
  */
 function _parseVaccinatorResult($json) {
     global $url;
+    $myUrl = $url;
+    // replace random numbers in given $url
+    // schema: 
+    // [min-max] will get replaced by a number between min and max
+    $matches = array();
+    $cnt = preg_match_all('/\[(\d+)-(\d+)\]/m', $url, $matches, PREG_SET_ORDER, 0);
+    if ($cnt > 0) {
+        $min = intval($matches[0][1]);
+        $max = intval($matches[0][2]);
+        $no = rand($min, $max);
+        $myUrl = preg_replace('/\[(\d+)-(\d+)\]/m', $no, $url);
+    }
+
     $data = array();
     $data["json"] = $json;
     $error = "";
-    $no = rand(1,2);
-    $myUrl = str_replace("dvnodeX", "dvnode".$no, $url);
     $res =  DoRequest($myUrl, $data, $error, 8);
+    echo $myUrl . "\n";
     $j = json_decode($res, true);
     return $j;
 }
