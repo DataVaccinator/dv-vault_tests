@@ -152,7 +152,7 @@ function _parseVaccinatorResult($json) {
     $data["json"] = $json;
     $error = "";
     $res =  DoRequest($myUrl, $data, $error, 8);
-    echo $myUrl . "\n";
+    // echo $myUrl . "\n";
     $j = json_decode($res, true);
     return $j;
 }
